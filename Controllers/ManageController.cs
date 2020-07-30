@@ -11,6 +11,7 @@ using MVC_Project.Models;
 namespace MVC_Project.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

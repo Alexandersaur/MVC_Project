@@ -12,6 +12,7 @@ using MVC_Project.Models;
 
 namespace MVC_Project.Controllers
 {
+    [RequireHttps]
     public class CommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

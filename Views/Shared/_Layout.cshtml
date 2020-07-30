@@ -48,7 +48,7 @@
                         <a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>Blog Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li>@Html.ActionLink("Posts", "Index", "BlogPosts", null, new { @class = "btn btn-primary" })</li>
-                    <li class="nav-item" color="red">
+                    <li class="nav-item">
                         @Html.Partial("_LoginPartial")
                     </li>
                     <li class="nav-item">
@@ -62,9 +62,9 @@
             </div>
         </nav>
     </header>
-
+    <div class="col-9 col-lg-offset-3"></div>
     @RenderBody()
-
+    </div>
     <!-- footer
     ================================================== -->
     <div class="col-9 offset-3">
