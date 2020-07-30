@@ -53,7 +53,7 @@ namespace MVC_Project.Controllers
                 try
                 {
                     var body = "<p>Email From: <bold>{0}</bold>({1})</p><p>Message:</p><p>{2}</p>";
-                    var from = "MyPortfolio<example@email.com>";
+                    var from = "MyBlog<example@email.com>";
                     model.Body = "This is a message from your blog site. The name and the email of the contacting";
 
                     var email = new MailMessage(from, ConfigurationManager.AppSettings["emailto"])
@@ -64,7 +64,6 @@ namespace MVC_Project.Controllers
                     };
                     var svc = new EmailService();
                     await svc.SendAsync(email);
-
                     return View(new EmailModel());
                 }
                 catch (Exception ex)
