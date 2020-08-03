@@ -1,21 +1,44 @@
 ﻿@model MVC_Project.Models.BlogPost
 @using Microsoft.AspNet.Identity
 
-@*@{ 
-    Viewbag.Title = "Details";
-}*@
+@*@{
+        Viewbag.Title = "Details";
+    }*@
 
-<div class="col-9 col-offset-3">
-    <article class="blog-post px-3 py-5 p-md-5 offset-3">
+<!-- Blog Section Start -->
+<div class="blog-area blog-details">
+    <div class="light-bg pt-120 pb-100">
         <div class="container">
-            <header class="blog-post-header">
-                <h2 class="title mb-2">@Model.Title</h2>
-                <div class="meta mb-3"><span class="date">Published 3 months ago</span><span class="time">5 min read</span><span class="comment"><a href="#">4 comments</a></span></div>
-            </header>
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-md-8 col-text-center">
+                    <div class="single-post medium-post">
+                        <div class="thumb">
+                            <img src="assets/img/blog/details/m2.jpg" alt="Blog Thumbnail" />
+                        </div>
+                        <div class="blog-text">
+                            <div class="title clearfix">
+                                <div class="post-date pull-left">
+                                    <h1 class="font-50 no-margin">14</h1>
+                                    <h6 class="no-margin">Jun , 2017</h6>
+                                </div>
+                                <div class="title-like">
+                                    <h4>@Model.Title</h4>
+                                    <div class="comm-icon">
+                                        <a href="javascript:void(0)"><i class="zmdi zmdi-favorite-outline"></i> Like</a>
+                                        <a href="javascript:void(0)"><i class="zmdi zmdi-comment-outline"></i> Comment</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="ptb-20 mb-5">@Html.Raw(Model.Body)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </article>
-</div>
+    </div>
 
+</div>
+<!-- Blog Section End -->
 <!--code from class 7/28 Tuesday-->
 
 <div class="container-fluid">

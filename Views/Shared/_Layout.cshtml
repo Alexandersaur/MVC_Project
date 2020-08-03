@@ -1,87 +1,144 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html class="no-js" lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Jeremy's Blog</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Jeremy Steward">
 
-    <link rel="shortcut icon" href="favicon.ico">
+    <title>@ViewBag.Title Jeremy's Blog</title>
 
-    <!-- FontAwesome JS-->
-    <link href="~/Content/all.min.css" rel="stylesheet" />
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-
-
-    <link href="~/Content/PagedList.css" rel="stylesheet" />
-
-    <!-- Theme CSS -->
-    <link id="theme-style" href="~/Content/theme-1.css" rel="stylesheet" />
-
+    <!-- style css -->
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <!-- modernizr js -->
+    <script src="~/Scripts/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
 <body>
-    <header class="header text-center">
-        <h1 class="blog-name pt-lg-4 mb-0"><a href="index.html">Jeremy's Blog</a></h1>
 
-        <nav class="navbar navbar-expand-lg navbar-dark">
+    <!-- Loading Bar Start -->
+    <div id="loading-wrap">
+        <div class="loading-effect"></div>
+    </div>
+    <!-- Loading Bar End -->
+    <!-- Loading Bar End -->
+    <!-- Header Section Start -->
+    <header class="header-style-1">
+        <div class="header-top active-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-2 col-md-3">
+                        <div class="left">
+                            <div class="logo">
+                                <a href="index.html">
+                                    <img src="~/images/img/logo.png" alt="Jeremy" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-10 col-md-9">
+                        <div class="right">
+                            <nav class="mainmenu menu-hover-1 pull-right">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse clearfix">
+                                    <ul class="navigation clearfix">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div id="navigation" class="collapse navbar-collapse flex-column">
-                <div class="profile-section pt-3 pt-lg-0">
-                    <img class="profile-image mb-3 rounded-circle mx-auto" src="~/images/profile.png" alt="image">
-
-                    <div class="bio mb-3">Introduction section, link to about page.<br><a href="about.html">Find out more about me</a></div><!--//bio-->
-                    <ul class="social-list list-inline py-3 mx-auto">
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
-                    </ul><!--//social-list-->
-                    <hr>
-                </div><!--//profile-section-->
-
-                <ul class="navbar-nav flex-column text-left">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>Blog Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li>@Html.ActionLink("Posts", "Index", "BlogPosts", null, new { @class = "btn btn-primary" })</li>
-                    <li class="nav-item">
-                        @Html.Partial("_LoginPartial")
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html"><i class="fas fa-user fa-fw mr-2"></i>About Me</a>
-                    </li>
-                </ul>
-
-                <div class="my-2 my-md-3">
-                    <a class="btn btn-primary" href="https://themes.3rdwavemedia.com/" target="_blank">Get in Touch</a>
+                                        <!-- HOME START -->
+                                        <li class="dropdown">
+                                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                                        </li>
+                                        <li>
+                                        @Html.ActionLink("Posts", "Index", "BlogPosts", null, new { @class = "nav-link" })
+                                        </li>
+                                        <li>
+                                        @Html.ActionLink("Create", "Create", "BlogPosts", null, new { @class = "nav-link" })
+                                        </li>
+                                        @Html.Partial("_LoginPartial")
+                                        <!-- HOME END -->
+                                        <!--<li>
+                                            <a href="about-us.html">About Me</a>
+                                        </li>-->
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
-    <div class="col-9 col-lg-offset-3"></div>
+    <!-- Header Space -->
+    <div class="header-space"></div>
+    <!-- Header Section End -->
+    <!-- Breadcrumbs Start -->
+    <div class="pages-header bg-color-2">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-xs-12">
+                    <div class="page-title ptb-110 plr-40">
+                        <h1 class="mb-15">Jeremy's Blog</h1>
+                        <h4 class="mb-5">Reflections on becoming a web developer</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumbs End -->
+
     @RenderBody()
-    </div>
-    <!-- footer
-    ================================================== -->
-    <div class="col-9 offset-3">
-        <footer class="footer text-center py-2 theme-bg-dark">
 
-            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-            <small class="copyright"> Jeremy Steward</small>
+    <!-- Footer Section Start -->
+    <footer class="footer white-bg ptb-20 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="left pull-left">
+                        @*<p>Copyright &copy; 2017 <a href="https://themeforest.net/user/regaltheme/portfolio" target="_blank">Regaltheme</a>.</p>*@
+                    </div>
+                    <!--<div class="social-icon simple pull-right">
+                        <ul class="clearfix">
+                            <li><a href="http://www.facebook.com" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+                            <li><a href="http://www.twitter.com" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+                            <li><a href="http://www.pinterest.com" target="_blank"><i class="zmdi zmdi-pinterest"></i></a></li>
+                            <li><a href="http://www.linkedin.com" target="_blank"><i class="zmdi zmdi-linkedin"></i></a></li>
+                            <li><a href="http://www.instagram.com" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+                        </ul>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- All JS Here -->
+    <!-- jQuery Latest Version -->
+    <script src="~/Scripts/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <!-- Isotope -->
+    <script src="~/Scripts/js/isotope.pkgd.js"></script>
+    <!-- Validate -->
+    <script src="~/Scripts/js/jquery.validate.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="~/Scripts/js/slick.min.js"></script>
+    <!-- Plugins JS -->
+    <script src="~/Scripts/js/plugins.js"></script>
+    <!-- main JS -->
+    <script src="~/Scripts/js/main.js"></script>
 
-        </footer>
-    </div>
-
-    <!-- Javascript -->
-
-
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/blog.js"></script>
     @RenderSection("scripts", required: false)
 </body>
+
 </html>

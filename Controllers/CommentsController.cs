@@ -55,10 +55,10 @@ namespace MVC_Project.Controllers
         [Authorize]
         public ActionResult Create(string Body, int blogPostId, string slug)
         {
-            //if (Body.IsNullOrWhiteSpace())
-            //{
-            //    return RedirectToAction
-            //}
+            if (Body.IsNullOrWhiteSpace())
+            {
+                return RedirectToAction("Details", "BlogPosts", new { slug });
+            }
 
             var comment = new Comment 
             { 
