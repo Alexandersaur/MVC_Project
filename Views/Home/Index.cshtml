@@ -20,7 +20,7 @@
                                 <h6>@post.Created.ToString("MM dd, yyyy")</h6>
                                 <hr class="line" />
                             </div>
-                            <p class="ptb-15">@Html.Raw(post.Body)</p>
+                            <p class="ptb-15 text-truncate">@Html.Raw(post.Body)</p>
                             <div class="blog-footer clearfix">
                                 <div class="pull-left">
                                     <a href="blog-details.html">@post.Abstract</a>
@@ -222,9 +222,9 @@
             </div>-->
             <!-- Fourth Row End -->
 
-            <div class="all-post text-center">
+            @*<div class="all-post text-center">
                 <a class="mt-30 mb-30" id="load-more-btn" href="javascript:void(0)">All Post Shown</a>
-            </div>
+            </div>*@
         </div>
     </div>
 </div>
