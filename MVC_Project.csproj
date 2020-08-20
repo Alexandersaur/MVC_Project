@@ -206,7 +206,7 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\venobox.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\about-me.jpg" />
@@ -559,10 +559,10 @@
     <Content Include="images\wheel-500.jpg" />
     <Content Include="images\.DS_Store" />
     <Content Include="images\blog\.DS_Store" />
-    <Content Include="fonts\fonts\Material-Design-Iconic-Font.eot" />
-    <Content Include="fonts\fonts\Material-Design-Iconic-Font.ttf" />
-    <Content Include="fonts\fonts\Material-Design-Iconic-Font.woff" />
-    <Content Include="fonts\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\fonts\Material-Design-Iconic-Font.woff2" />
     <Content Include="Scripts\js\bootstrap.min.js" />
     <Content Include="Scripts\js\isotope.pkgd.js" />
     <Content Include="Scripts\js\jquery.validate.min.js" />

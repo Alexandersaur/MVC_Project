@@ -1,231 +1,63 @@
 ﻿@model IEnumerable<MVC_Project.Models.BlogPost>
 
-<!-- Blog Section Start -->
-<div class="blog-area blog-one light-bg section-padding">
-    <div class="container mb-minus">
-        <div class="row">
-
-            @foreach (var post in Model)
-            {
-                <div class="col-xs-12 col-sm-6 mb-30">
-                    <div class="blog-post">
-                        <div class="thumb" style="width: 570px; height: 332px;">
-                            <a href="blog-details.html">
-                                <img src="~/images/jake-allison-m5w2DWi3W0k-unsplash copy.jpg" alt="Blog Thumbnail" />
-                            </a>
-                        </div>
-                        <div class="blog-text plr-40 ptb-40 white-bg" style="width: 490px; height: 150px;">
-                            <div class="title">
-                                <a href="@Url.Action("Details", "BlogPosts", new { Id = post.ID })"><h4>@post.Title</h4></a>
-                                <h6>@post.Created.ToString("MM dd, yyyy")</h6>
-                                <hr class="line" />
-                            </div>
-                            <p class="ptb-15 text-truncate">@Html.Raw(post.Body)</p>
-                            <div class="blog-footer clearfix">
-                                <div class="pull-left">
-                                    <a href="blog-details.html">@post.Abstract</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="blog-details.html"><i class="zmdi zmdi-favorite-outline"></i></a>
-                                    <a href="blog-details.html"><i class="zmdi zmdi-comment-outline"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+@foreach (var post in Model)
+{
+    int count = 1;
+    if (count % 2 != 0)
+    {
+        <div class="col-md-6">
+            <div class="blog-post">
+                <div class="thumb">
+                    <a href="@Url.Action("Details","BlogPosts",new { slug = post.Slug })">
+                        <img class="img-responsive" src="@post.MediaURL" alt="Blog Thumbnail" style="width: 570px; height: 332px;" />
+                    </a>
                 </div>
-                <hr />
-            }
-            <!--<div class="col-xs-12 col-sm-6 mb-30">
-                <div class="blog-post">
-                    <div class="thumb">
-                        <a href="blog-details.html">
-                            <img src="assets/img/blog/s2.jpg" alt="Blog Thumbnail" />
-                        </a>
+                <div class="blog-text plr-40 ptb-40 white-bg">
+                    <div class="title">
+                        <a href="@Url.Action("Details","BlogPosts",new { slug = post.Slug })"><h4>@post.Title</h4></a>
+                        <h6>@post.Created.ToString("MMM dd, yyyy")</h6>
+                        <hr class="line" />
                     </div>
-                    <div class="blog-text plr-40 ptb-40 white-bg">
-                        <div class="title">
-                            <a href="blog-details.html"><h4>If you are going to use a passage of Lorem Ipsum.</h4></a>
-                            <h6>Jun 13, 2017</h6>
-                            <hr class="line"/>
+                    <p class="ptb-15">@post.Abstract</p>
+                    <div class="blog-footer clearfix">
+                        <div class="pull-left">
+                            <a href="@Url.Action("Details","BlogPosts",new { slug = post.Slug })">Read More</a>
                         </div>
-                        <p class="ptb-15">Contrary to popular belief, Lorem Ipsum is not simply random text. It haroots in a piece of classical Latin literature from 45 BC, making it over 2000 yea old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.</p>
-                        <div class="blog-footer clearfix">
-                            <div class="pull-left">
-                                <a href="blog-details.html">Read More</a>
-                            </div>
-                            <div class="pull-right">
+                        @*<div class="pull-right">
                                 <a href="blog-details.html"><i class="zmdi zmdi-favorite-outline"></i></a>
                                 <a href="blog-details.html"><i class="zmdi zmdi-comment-outline"></i></a>
-                            </div>
-                        </div>
+                            </div>*@
                     </div>
                 </div>
-            </div>-->
-            <!-- First Row End -->
-            <!--<div class="col-xs-12 col-sm-6 mb-30">
-                <div class="blog-post">
-                    <div class="thumb">
-                        <a href="blog-details.html">
-                            <img src="assets/img/blog/s3.jpg" alt="Blog Thumbnail" />
-                        </a>
+            </div>
+        </div> }
+    else
+    {
+        <div class="col-md-6">
+            <div class="blog-post">
+                <div class="thumb">
+                    <a href="@Url.Action("Details","BlogPosts",new { slug = post.Slug })">
+                        <img class="img-responsive" src="@post.MediaURL" alt="Blog Thumbnail" style="width: 570px; height: 332px;" />
+                    </a>
+                </div>
+                <div class="blog-text plr-40 ptb-40 white-bg">
+                    <div class="title">
+                        <a href="@Url.Action("Details","BlogPosts",new { slug = post.Slug })"><h4>@post.Title</h4></a>
+                        <h6>@post.Created.ToString("MMM dd, yyyy")</h6>
+                        <hr class="line" />
                     </div>
-                    <div class="blog-text plr-40 ptb-40 white-bg">
-                        <div class="title">
-                            <a href="blog-details.html"><h4>Cicero are also reproduced in.</h4></a>
-                            <h6>Jun 12, 2017</h6>
-                            <hr class="line"/>
+                    <p class="ptb-15">@post.Abstract</p>
+                    <div class="blog-footer clearfix">
+                        <div class="pull-left">
+                            <a href="@Url.Action("Details","BlogPosts",new { slug = post.Slug })">Read More</a>
                         </div>
-                        <p class="ptb-15">Contrary to popular belief, Lorem Ipsum is not simply random text. It haroots in a piece of classical Latin literature from 45 BC, making it over 2000 yea old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.</p>
-                        <div class="blog-footer clearfix">
-                            <div class="pull-left">
-                                <a href="blog-details.html">Read More</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="blog-details.html"><i class="zmdi zmdi-favorite-outline"></i></a>
-                                <a href="blog-details.html"><i class="zmdi zmdi-comment-outline"></i></a>
-                            </div>
+                        <div class="pull-right">
+                            <a href="blog-details.html"><i class="zmdi zmdi-favorite-outline"></i></a>
+                            <a href="blog-details.html"><i class="zmdi zmdi-comment-outline"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 mb-30 more-load">
-                <div class="blog-post">
-                    <div class="thumb">
-                        <a href="blog-details.html">
-                            <img src="assets/img/blog/s4.jpg" alt="Blog Thumbnail" />
-                        </a>
-                    </div>
-                    <div class="blog-text plr-40 ptb-40 white-bg">
-                        <div class="title">
-                            <a href="blog-details.html"><h4>If you are going to use a passage of Lorem Ipsum.</h4></a>
-                            <h6>Jun 13, 2017</h6>
-                            <hr class="line"/>
-                        </div>
-                        <p class="ptb-15">Contrary to popular belief, Lorem Ipsum is not simply random text. It haroots in a piece of classical Latin literature from 45 BC, making it over 2000 yea old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.</p>
-                        <div class="blog-footer clearfix">
-                            <div class="pull-left">
-                                <a href="blog-details.html">Read More</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="blog-details.html"><i class="zmdi zmdi-favorite-outline"></i></a>
-                                <a href="blog-details.html"><i class="zmdi zmdi-comment-outline"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- Second Row End -->
-            <!--<div class="col-xs-12 col-sm-6 mb-30 more-load">
-                <div class="blog-post">
-                    <div class="thumb">
-                        <a href="blog-details.html">
-                            <img src="assets/img/blog/s5.jpg" alt="Blog Thumbnail" />
-                        </a>
-                    </div>
-                    <div class="blog-text plr-40 ptb-40 white-bg">
-                        <div class="title">
-                            <a href="blog-details.html"><h4>All the Lorem Ipsum generators on the Internet </h4></a>
-                            <h6>Jun 13, 2017</h6>
-                            <hr class="line"/>
-                        </div>
-                        <p class="ptb-15">Contrary to popular belief, Lorem Ipsum is not simply random text. It haroots in a piece of classical Latin literature from 45 BC, making it over 2000 yea old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.</p>
-                        <div class="blog-footer clearfix">
-                            <div class="pull-left">
-                                <a href="blog-details.html">Read More</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="blog-details.html"><i class="zmdi zmdi-favorite-outline"></i></a>
-                                <a href="blog-details.html"><i class="zmdi zmdi-comment-outline"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 mb-30 more-load">
-                <div class="blog-post">
-                    <div class="thumb">
-                        <a href="blog-details.html">
-                            <img src="assets/img/blog/s6.jpg" alt="Blog Thumbnail" />
-                        </a>
-                    </div>
-                    <div class="blog-text plr-40 ptb-40 white-bg">
-                        <div class="title">
-                            <a href="blog-details.html"><h4>De Finibus Bonorum et Malorum" by Cicero</h4></a>
-                            <h6>Jun 12, 2017</h6>
-                            <hr class="line"/>
-                        </div>
-                        <p class="ptb-15">Contrary to popular belief, Lorem Ipsum is not simply random text. It haroots in a piece of classical Latin literature from 45 BC, making it over 2000 yea old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.</p>
-                        <div class="blog-footer clearfix">
-                            <div class="pull-left">
-                                <a href="blog-details.html">Read More</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="blog-details.html"><i class="zmdi zmdi-favorite-outline"></i></a>
-                                <a href="blog-details.html"><i class="zmdi zmdi-comment-outline"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- Third Row End -->
-            <!--<div class="col-xs-12 col-sm-6 mb-30 more-load">
-                <div class="blog-post">
-                    <div class="thumb">
-                        <a href="blog-details.html">
-                            <img src="assets/img/blog/s4.jpg" alt="Blog Thumbnail" />
-                        </a>
-                    </div>
-                    <div class="blog-text plr-40 ptb-40 white-bg">
-                        <div class="title">
-                            <a href="blog-details.html"><h4>All the Lorem Ipsum generat random pices</h4></a>
-                            <h6>Jun 13, 2017</h6>
-                            <hr class="line"/>
-                        </div>
-                        <p class="ptb-15">Contrary to popular belief, Lorem Ipsum is not simply random text. It haroots in a piece of classical Latin literature from 45 BC, making it over 2000 yea old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.</p>
-                        <div class="blog-footer clearfix">
-                            <div class="pull-left">
-                                <a href="blog-details.html">Read More</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="blog-details.html"><i class="zmdi zmdi-favorite-outline"></i></a>
-                                <a href="blog-details.html"><i class="zmdi zmdi-comment-outline"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 mb-30 more-load">
-                <div class="blog-post">
-                    <div class="thumb">
-                        <a href="blog-details.html">
-                            <img src="assets/img/blog/s3.jpg" alt="Blog Thumbnail" />
-                        </a>
-                    </div>
-                    <div class="blog-text plr-40 ptb-40 white-bg">
-                        <div class="title">
-                            <a href="blog-details.html"><h4>Various versions have evolved  of latin</h4></a>
-                            <h6>Jun 13, 2017</h6>
-                            <hr class="line"/>
-                        </div>
-                        <p class="ptb-15">Contrary to popular belief, Lorem Ipsum is not simply random text. It haroots in a piece of classical Latin literature from 45 BC, making it over 2000 yea old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.</p>
-                        <div class="blog-footer clearfix">
-                            <div class="pull-left">
-                                <a href="blog-details.html">Read More</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="blog-details.html"><i class="zmdi zmdi-favorite-outline"></i></a>
-                                <a href="blog-details.html"><i class="zmdi zmdi-comment-outline"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- Fourth Row End -->
-
-            @*<div class="all-post text-center">
-                <a class="mt-30 mb-30" id="load-more-btn" href="javascript:void(0)">All Post Shown</a>
-            </div>*@
-        </div>
-    </div>
-</div>
-<!-- Blog Section End -->
+        </div>}
+    count++;
+}

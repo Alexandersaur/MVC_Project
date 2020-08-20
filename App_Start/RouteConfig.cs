@@ -15,8 +15,8 @@ namespace MVC_Project
 
             routes.MapRoute(
                 name: "NewSlug",
-                url: "Blog/Details/slug",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "Blog/Details/{slug}",
+                defaults: new { controller = "BlogPosts", action = "Details", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

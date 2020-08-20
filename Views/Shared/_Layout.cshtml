@@ -15,6 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <!-- style css -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/style.css" rel="stylesheet" />
     <!-- modernizr js -->
     <script src="~/Scripts/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -35,37 +36,39 @@
             <div class="container">
                 <div class="row">
                     @*<div class="col-xs-12 col-sm-2 col-md-3">
-                        <div class="left">
-                            <div class="logo">
-                                <a href="index.html">
-                                    <img src="~/images/img/logo.png" alt="Jeremy" />
-                                </a>
+                            <div class="left">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img src="~/images/img/logo.png" alt="Jeremy" />
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </div>*@
+                        </div>*@
                     <div class="col-xs-12 col-sm-10 col-md-9">
                         <div class="right">
                             <nav class="mainmenu menu-hover-1 pull-right">
                                 @*<div class="navbar-header">
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>*@
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>*@
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix plr-60">
 
                                         <!-- HOME START -->
                                         <li class="dropdown">
-                                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                                        </li>
+                                        @if(User.IsInRole("Admin")){
+                                        <li>
+                                            @Html.ActionLink("Posts", "Index", "BlogPosts", null, new { @class = "nav-link" })
                                         </li>
                                         <li>
-                                        @Html.ActionLink("Posts", "Index", "BlogPosts", null, new { @class = "nav-link" })
+                                            @Html.ActionLink("Create", "Create", "BlogPosts", null, new { @class = "nav-link" })
                                         </li>
-                                        <li>
-                                        @Html.ActionLink("Create", "Create", "BlogPosts", null, new { @class = "nav-link" })
-                                        </li>
+                                        }
                                         @Html.Partial("_LoginPartial")
                                         <!-- HOME END -->
                                         <!--<li>
@@ -97,9 +100,14 @@
         </div>
     </div>
     <!-- Breadcrumbs End -->
-
-    @RenderBody()
-
+    <!-- Blog Section Start -->
+    <div class="blog-area blog-one light-bg section-padding">
+        <div class="container text-center mb-minus">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
     <!-- Footer Section Start -->
     <footer class="footer white-bg ptb-20 clearfix">
         <div class="container">
