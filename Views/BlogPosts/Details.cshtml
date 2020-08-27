@@ -1,35 +1,44 @@
 ﻿@model MVC_Project.Models.BlogPost
-@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity;
+
 
 @*@{
         Viewbag.Title = "Details";
     }*@
 
 <!-- Blog Section Start -->
-<div class="blog-area blog-details">
-    <div class="light-bg pt-120 pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-10 col-md-8 col-text-center">
-                    <div class="single-post medium-post">
-                        <div class="thumb">
-                            <img src="assets/img/blog/details/m2.jpg" alt="Blog Thumbnail" />
-                        </div>
-                        <div class="blog-text">
-                            <div class="title clearfix">
-                                <div class="post-date pull-left">
-                                    <h1 class="font-50 no-margin">14</h1>
-                                    <h6 class="no-margin">Jun , 2017</h6>
-                                </div>
-                                <div class="title-like">
-                                    <h4>@Model.Title</h4>
-                                    <div class="comm-icon">
-                                        <a href="javascript:void(0)"><i class="zmdi zmdi-favorite-outline"></i> Like</a>
-                                        <a href="javascript:void(0)"><i class="zmdi zmdi-comment-outline"></i> Comment</a>
+
+    <div class="blog-area blog-details">
+        <div class="light-bg pt-120 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-text-left">
+                        <div class="single-post medium-post">
+                            <div class="thumb">
+                                <img src="@Model.MediaURL" alt="Blog Thumbnail" />
+                            </div>
+                            <div class="blog-text">
+                                <div class="title clearfix">
+                                    <div class="post-date pull-left">
+                                        <h1 class="font-50 no-margin">@Model.Created.ToString("dd")</h1>
+                                        <h6 class="no-margin">@Model.Created.ToString("MMM, yyyy")</h6>
+                                    </div>
+                                    <div class="title-like">
+                                        <h4>@Model.Title</h4>
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            @Html.ActionLink("Edit Post", "Edit", "BlogPosts", new { id = Model.ID }, new { @class = "btn btn-warning" })
+                                            @Html.ActionLink("Delete Post", "Delete", "BlogPosts", new { id = Model.ID }, new { @class = "btn btn-danger" })
+                                        }
+
+                                        @*<div class="comm-icon">
+                                            <a href="javascript:void(0)"><i class="zmdi zmdi-favorite-outline"></i> Like</a>
+                                            <a href="javascript:void(0)"><i class="zmdi zmdi-comment-outline"></i> Comment</a>
+                                        </div>*@
                                     </div>
                                 </div>
+                                <p class="ptb-20 mb-5">@Html.Raw(Model.Body)</p>
                             </div>
-                            <p class="ptb-20 mb-5">@Html.Raw(Model.Body)</p>
                         </div>
                     </div>
                 </div>
@@ -37,35 +46,54 @@
         </div>
     </div>
 
-</div>
 <!-- Blog Section End -->
 <!--code from class 7/28 Tuesday-->
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            @foreach (var comment in Model.Comments.OrderByDescending(c => c.Created))
+            @foreach (var comment in Model.Comments)
             {
-                <p>@Html.Raw(comment.CommentBody)</p>
-                <p>By: @comment.Author.DisplayName on @comment.Created</p>
+                <p id="comment-@comment.Id">@Html.Raw(comment.CommentBody)</p>
+                if (comment.AuthorId != null)
+                {
+                    <p>By: @comment.Author.DisplayName on @comment.Created </p>
+                }
+                if (User.IsInRole("Admin") || User.IsInRole("Moderator") || User.Identity.GetUserId() == comment.AuthorId)
+                {
+                    @Html.ActionLink("Edit Comment", "Edit", "Comments", new { id = comment.Id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete Comment", "Delete", "Comments", new { id = comment.Id }, new { @class = "btn btn-danger" })
+                }
                 <hr />
             }
         </div>
     </div>
 </div>
 
+@*<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                @foreach (var comment in Model.Comments.OrderByDescending(c => c.Created))
+                {
+                    <p>@Html.Raw(comment.CommentBody)</p>
+                    <p>By: @comment.Author.DisplayName on @comment.Created</p>
+                    <hr />
+                }
+            </div>
+        </div>
+    </div>*@
+
 @if (User.Identity.IsAuthenticated)
 {
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-6">
                 @using (Html.BeginForm("Create", "Comments", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
                     @Html.Hidden("BlogPostId", Model.ID)
                     @Html.Hidden("Slug", Model.Slug)
                     <div class="row">
-                        @Html.TextArea("CommentBody", new { rows = 10, cols = 40 })
+                        @Html.TextArea("CommentBody", new { rows = 10, cols = 120 })
                     </div>
                     <div class="row">
                         <button class="btn btn-danger" type="submit">Submit Comment</button>
@@ -77,25 +105,3 @@
 }
 
 <!--code from class 7/29 Wednesday-->
-
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-9 col-md-offset-3">
-            @foreach (var comment in Model.Comments)
-            {
-                <p id="`comment-@comment.Id">@Html.Raw(comment.CommentBody)</p>
-                if (comment.AuthorId != null)
-                {
-                    <p>By: @comment.Author.DisplayName on @comment.Created </p>
-                }
-                if (User.IsInRole("Admin") || User.IsInRole("Moderator")) //|| User.Identity.GetUserId() == comment.AuthorId)
-                {
-                    @Html.ActionLink("Edit Comment", "Edit", "Comments", new { id = comment.Id }, new { @class = "btn btn-warning" })
-                    @Html.ActionLink("Delete Comment", "Delete", "Comments", new { id = comment.Id }, new { @class = "btn btn-danger" })
-                }
-                <hr />
-            }
-        </div>
-    </div>
-</div>

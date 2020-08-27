@@ -35,7 +35,7 @@ namespace MVC_Project.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            if(!context.Roles.Any(r => r.Name == "Moderator"))
+            if (!context.Roles.Any(r => r.Name == "Moderator"))
             {
                 roleManager.Create(new IdentityRole() { Name = "Moderator" });
             }
@@ -48,17 +48,8 @@ namespace MVC_Project.Migrations
             //now i need to go out and look for the presence of a user with a specific email
             // if and only if it is not found will i create a user with that email
 
-            if(!context.Users.Any(u => u.Email == "jeremy.a.steward@gmail.com"))
-                //jasontwichell@Coderfoundry.com
+            if (!context.Users.Any(u => u.Email == "jeremy.a.steward@gmail.com"))
             {
-                //var newUser = new ApplicationUser();
-                //newUser.Email = "jeremy.a.steward@gmail.com";
-                //newUser.UserName = "jeremy.a.steward@gmail.com";
-                //newUser.FirstName = "Jeremy";
-                //newUser.LastName = "Steward";
-                //newUser.DisplayName = "JSteward";
-                //userManager.Create(newUser, "Abc&123!");
-
                 userManager.Create(new ApplicationUser()
                 {
                     Email = "jeremy.a.steward@gmail.com",
@@ -67,7 +58,9 @@ namespace MVC_Project.Migrations
                     LastName = "Steward",
                     DisplayName = "Jsteward"
                 }, "Abc&123!");
-
+            }
+            if (!context.Users.Any(u => u.Email == "jasontwichell@coderfoundry.com"))
+            {
                 userManager.Create(new ApplicationUser()
                 {
                     Email = "jasontwichell@coderfoundry.com",
@@ -76,33 +69,34 @@ namespace MVC_Project.Migrations
                     LastName = "Twichell",
                     DisplayName = "Jtwichell"
                 }, "Abc&123!");
-
+            }
+            if (!context.Users.Any(u => u.Email == "arussell@coderfoundry.com"))
+            {
                 userManager.Create(new ApplicationUser()
                 {
-                    Email = "andrewrussell@coderfoundry.com",
-                    UserName = "andrewrussell@coderfoundry.com",
+                    Email = "arussell@coderfoundry.com",
+                    UserName = "arussell@coderfoundry.com",
                     FirstName = "Andrew",
                     LastName = "Russell",
                     DisplayName = "Arussell"
                 }, "Abc&123!");
-
-                //Step 1: Grab the id that was just created by adding the above user
-                var userId = userManager.FindByEmail("jeremy.a.steward@gmail.com").Id;
-                //now I want to assign the user to a specific role
-                userManager.AddToRole(userId, "Admin");
-
-                var userId2 = userManager.FindByEmail("jasontwichell@coderfoundry.com").Id;
-                userManager.AddToRole(userId2, "Moderator");
-
-                var userId3 = userManager.FindByEmail("andrewrussell@coderfoundry.com").Id;
-                userManager.AddToRole(userId3, "Admin");
             }
+            //Step 1: Grab the id that was just created by adding the above user
+            var userId = userManager.FindByEmail("jeremy.a.steward@gmail.com").Id;
+            //now I want to assign the user to a specific role
+            userManager.AddToRole(userId, "Admin");
 
+            var userId2 = userManager.FindByEmail("jasontwichell@coderfoundry.com").Id;
+            userManager.AddToRole(userId2, "Moderator");
 
+            var userId3 = userManager.FindByEmail("arussell@coderfoundry.com").Id;
+            userManager.AddToRole(userId3, "Admin");
         }
+
 
     }
 
-   
 }
+
+   
 

@@ -152,11 +152,11 @@ namespace MVC_Project.Controllers
                     ModelState.AddModelError("Title", "Invalid Title");
                     return View(blogPost);
                 }
-                if (db.BlogPosts.Any(p => p.Slug == slug))
-                {
-                    ModelState.AddModelError("Title", "The Title must be unique.");
-                    return View(blogPost);
-                }
+                //if (db.BlogPosts.Any(p => p.Slug == slug))
+                //{
+                //    ModelState.AddModelError("Title", "The Title must be unique.");
+                //    return View(blogPost);
+                //}
 
                 blogPost.Slug = slug;
 

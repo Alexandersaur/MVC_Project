@@ -11,10 +11,10 @@
 <h2>Index</h2>
 @using (Html.BeginForm("Index", "BlogPosts", FormMethod.Get, new { @class = "form" }))
 {
-    <div class="form-control-static controls-row search-row">
+    <div class="form-control-static controls-row search-row align-right">
         <input id="searchStr" name="searchStr" class="input-block-level" type="text" placeholder="Search... "/>
         <button id="searchStr" name="searchStr" class="btn btn-success" type="submit">
-            <i class="icon-search"></i>
+            <i class="icon-search">Go!</i>
         </button>
     </div>
 }
@@ -37,9 +37,9 @@
         <th>
             @Html.DisplayName("Slug")
         </th>
-        <th>
+        @*<th>
             @Html.DisplayName("Body")
-        </th>
+        </th>*@
         <th>
             @Html.DisplayName("Abstract")
         </th>
@@ -66,9 +66,9 @@
         <td>
             @Html.DisplayFor(modelItem => blogPost.Slug)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => blogPost.Body)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => blogPost.Abstract)
         </td>

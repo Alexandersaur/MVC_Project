@@ -205,8 +205,8 @@
     <Content Include="Content\css\slick.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\venobox.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Content\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\about-me.jpg" />
@@ -700,6 +700,7 @@
     <Content Include="Scripts\tinymce\themes\silver\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Views\BlogPosts\NewFile1.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
