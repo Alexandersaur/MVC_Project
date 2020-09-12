@@ -82,7 +82,7 @@ namespace MVC_Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Title,Slug,Body,Abstract,MediaURL,Published")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
@@ -141,7 +141,7 @@ namespace MVC_Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "ID,Created,Updated,Title,Slug,Body,Abstract,MediaURL,Published")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
@@ -152,22 +152,29 @@ namespace MVC_Project.Controllers
                     ModelState.AddModelError("Title", "Invalid Title");
                     return View(blogPost);
                 }
-                //if (db.BlogPosts.Any(p => p.Slug == slug))
-                //{
-                //    ModelState.AddModelError("Title", "The Title must be unique.");
-                //    return View(blogPost);
-                //}
+
+                if (db.BlogPosts.Any(p => p.Slug == slug))
+                {
+                    ModelState.AddModelError("Title", "The Title must be unique.");
+                    return View(blogPost);
+                }
 
                 blogPost.Slug = slug;
+                blogPost.Updated = DateTime.Now;
+                var bpId = blogPost.ID;
+                var oldPost = db.BlogPosts.AsNoTracking().FirstOrDefault(b => b.ID == bpId);
+                blogPost.Created = oldPost.Created;
 
                 if (ImageUploadValidator.IsWebFriendlyImage(image))
                 {
                     var fileName = Path.GetFileName(image.FileName);
+                    var justFileName = Path.GetFileNameWithoutExtension(fileName);
+                    justFileName = StringUtilities.URLFriendly(justFileName);
+                    fileName = $"{justFileName}_{DateTime.Now.Ticks}{Path.GetExtension(fileName)}";
                     image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
                     blogPost.MediaURL = "/Uploads/" + fileName;
                 }
 
-                blogPost.Updated = DateTime.Now;
                 db.Entry(blogPost).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

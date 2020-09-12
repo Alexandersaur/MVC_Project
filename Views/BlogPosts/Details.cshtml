@@ -15,7 +15,10 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-text-left">
                         <div class="single-post medium-post">
                             <div class="thumb">
-                                <img src="@Model.MediaURL" alt="Blog Thumbnail" />
+                                @if (Model.MediaURL != null)
+                                {
+                                    <img class="img-responsive" src="@Model.MediaURL" alt="Blog Thumbnail" />
+                                }
                             </div>
                             <div class="blog-text">
                                 <div class="title clearfix">
