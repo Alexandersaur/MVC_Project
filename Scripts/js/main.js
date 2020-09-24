@@ -219,12 +219,12 @@
      /*
      SCROLLUP
      ================================ */
-     $.scrollUp({
-         scrollText: '<i class="zmdi zmdi-long-arrow-up"></i>',
-         easingType: 'linear',
-         scrollSpeed: 500,
-         animation: 'slide'
-    });
+    // $.scrollUp({
+    //     scrollText: '<i class="zmdi zmdi-long-arrow-up"></i>',
+    //     easingType: 'linear',
+    //     scrollSpeed: 500,
+    //     animation: 'slide'
+    //});
 	
      /*
      LOAD MORE JQUERY
